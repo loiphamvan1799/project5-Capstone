@@ -36,7 +36,7 @@ Resources:
       ImageId: !Ref ImageId
       Tags:
         - Key: Name
-          Value: !Sub ${EnvironmentName}-ManagementHost1
+          Value: !Sub ${EnvironmentName}-managementHost1
 
   ManagementHost2:
     Type: AWS::EC2::Instance
@@ -48,4 +48,4 @@ Resources:
       ImageId: !Ref ImageId
       Tags:
         - Key: Name
-          Value: !Sub ${EnvironmentName}-ManagementHost2
+          Value: !Sub ${EnvironmentName}-managementHost2

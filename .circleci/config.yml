@@ -111,11 +111,11 @@ jobs:
           name: config management
           command: |
             aws cloudformation deploy \
-              --template-file filesCloudFormation/management.yml \
+              --template-file filesCloudFormation/manageHostCluster.yml \
               --tags project=${ENVIRONMENT_NAME}-project \
               --stack-name "${ENVIRONMENT_NAME}-eks-management" \
               --region ${AWS_DEFAULT_REGION} \
-              --parameter-overrides file://filesCloudFormation/management-parameters.json \
+              --parameter-overrides file://filesCloudFormation/manage-host-parameters.json \
               --output text >> ~/project/ansible/checkIfDeployed.txt
             cat ~/project/ansible/checkIfDeployed.txt
       - run:
