@@ -9,12 +9,12 @@
   tasks:
     - name: Get the name of LoadBalancer DNS
       shell: "./bin/kubectl get svc {{ ENVIRONMENT_NAME }}"
-      register: elb_dns
+      register: loadbalancer_dns
       args:
         chdir: $HOME
 
     - name: Copy the output to the local file
       copy:
-        content: "{{ elb_dns.stdout }}"
-        dest: "elb_dns.txt"
+        content: "{{ loadbalancer_dns.stdout }}"
+        dest: "loadbalancer_dns.txt"
       delegate_to: localhost

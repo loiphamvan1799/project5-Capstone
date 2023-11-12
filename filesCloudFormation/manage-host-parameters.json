@@ -10,9 +10,5 @@
 	{
 		"ParameterKey": "ImageId",
 		"ParameterValue": "ami-05c13eab67c5d8861"
-	},
-	{
-		"ParameterKey": "PublicSubnet2CIDR",
-		"ParameterValue": "10.0.1.0/24"
 	}
 ]
