@@ -1,5 +1,5 @@
 Description: >
-  Creates the nodegroup for the Amazon EKS Cluster
+  Creates the node for EKS
 
 Parameters:
   EnvironmentName:
@@ -50,7 +50,6 @@ Resources:
         - !Sub "arn:${AWS::Partition}:iam::aws:policy/AmazonEKS_CNI_Policy"
         - !Sub "arn:${AWS::Partition}:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
       Path: /
-
 
   NodeGroup:
     Type: AWS::EKS::Nodegroup

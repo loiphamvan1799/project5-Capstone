@@ -5,7 +5,7 @@
   become: yes
   vars:
     DOCKER_ID: "{{ lookup('env', 'ENVIRONMENT_NAME') }}"
-    DOCKER_PATH: "{{ lookup('env', 'CIRCLE_WORKFLOW_ID') }}"
+    DOCKER_PATH: "{{ lookup('env', 'DOCKER_PATH') }}"
   tasks:
     - name: Update the deployment to run the latest Build
       shell: "./bin/kubectl set image deployments/{{ DOCKER_ID }} {{ DOCKER_ID }}=loiphamvan/{{ DOCKER_ID }}:{{ DOCKER_PATH }}"

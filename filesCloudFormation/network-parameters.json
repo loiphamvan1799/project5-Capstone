@@ -1,7 +1,7 @@
 [
 	{
 		"ParameterKey": "EnvironmentName",
-		"ParameterValue": "Project5-Capstone"
+		"ParameterValue": "project-capstone"
 	},
 	{
 		"ParameterKey": "VpcCIDR",
