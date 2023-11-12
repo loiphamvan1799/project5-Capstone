@@ -46,13 +46,14 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
+            python3 -m venv ~/.venv
+	          source ~/.devops/bin/activate
             make install
       - run:
           name: run lint
           command: |
-            . venv/bin/activate
+            python3 -m venv ~/.venv
+	          source ~/.devops/bin/activate
             make lint
       - save_cache:
           paths:
