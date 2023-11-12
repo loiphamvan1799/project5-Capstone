@@ -200,8 +200,6 @@ workflows:
   default:
     jobs:
       - upload-docker:
-          requires:
-            - test
           filters:
             branches:
               only: [master]
