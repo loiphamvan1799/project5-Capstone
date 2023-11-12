@@ -219,3 +219,17 @@ workflows:
   default:
     jobs:
       - lint
+      - deploy-infrastructure:
+          filters:
+            branches:
+              only: [master]
+      - configure-infrastructure:
+          requires:
+            - deploy-infrastructure
+      - configuration-cluster:
+          requires:
+            - configure-infrastructure
+            - upload-docker
+      - deploy-docker:
+          requires:
+            - configuration-cluster
