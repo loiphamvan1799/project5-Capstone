@@ -1,0 +1,15 @@
+--- 
+- name: "Download awcli file zip"
+  shell: curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  args:
+    chdir: $HOME
+
+- name: "Unzip awscli file zip"
+  shell: unzip -o awscliv2.zip
+  args:
+    chdir: $HOME
+    
+- name: "Install awscli"
+  shell: ./aws/install --update
+  args:
+    chdir: $HOME
