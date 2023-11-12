@@ -96,6 +96,7 @@ jobs:
               --region ${AWS_DEFAULT_REGION} \
               --parameter-overrides file://filesCloudFormation/cluster-parameters.json \
               --capabilities CAPABILITY_NAMED_IAM
+          no_output_timeout: 15m
       - run:
           name: config node
           command: |
@@ -209,6 +210,7 @@ jobs:
             cat ~/project/ansible/inventory.txt
             cd ansible
             ansible-playbook -i ~/project/ansible/inventory.txt ~/project/ansible/deploy-app.yml
+          no_output_timeout: 3m
 
 workflows:
   default:
