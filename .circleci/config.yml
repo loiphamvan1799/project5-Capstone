@@ -46,20 +46,19 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            python3 -m venv ~/.venv
-	          source ~/.venv/bin/activate
+            python3 -m venv venv
+            source ~/.venv/bin/activate
             make install
       - run:
           name: run lint
           command: |
-            python3 -m venv ~/.venv
-	          source ~/.venv/bin/activate
+            python3 -m venv venv
+            source ~/.venv/bin/activate
             make lint
       - save_cache:
           paths:
             - ./venv
           key: v1-dependencies-{{ checksum "requirements.txt" }}
-
 
   upload-docker:
     docker:
