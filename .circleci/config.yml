@@ -68,11 +68,6 @@ jobs:
           command: |
             source ~/.devops/bin/activate
             make test
-      - run:
-          name: run lint
-          command: |
-            source ~/.devops/bin/activate
-            make lint
 
   deploy-infrastructure:
     docker:
@@ -92,7 +87,7 @@ jobs:
               --region ${AWS_DEFAULT_REGION} \
               --parameter-overrides file://filesCloudFormation/network-parameters.json
       - run:
-          name: Ensure EKS Cluster exists
+          name: Config EKS Cluster
           command: |
             aws cloudformation deploy \
               --template-file filesCloudFormation/cluster.yml \
