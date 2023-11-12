@@ -114,7 +114,7 @@ Resources:
     Type: 'AWS::EC2::EIP'
     Properties:
       - Key: Name
-          Value: !Sub ${EnvironmentName} Elastic IP for NAT Gateway1
+        Value: !Sub ${EnvironmentName} Elastic IP for NAT Gateway1
 
   NatGatewayEIP2:
     DependsOn:
@@ -122,7 +122,7 @@ Resources:
     Type: 'AWS::EC2::EIP'
     Properties:
       - Key: Name
-          Value: !Sub ${EnvironmentName} Elastic IP for NAT Gateway2
+        Value: !Sub ${EnvironmentName} Elastic IP for NAT Gateway2
 
   NatGateway1:
     DependsOn:
