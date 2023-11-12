@@ -34,27 +34,6 @@ commands:
             export PATH=$PATH:/usr/local/bin/kubectl
 
 jobs:
-  upload-docker:
-    docker:
-      - image: circleci/golang:1.15
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 19.03.13
-      - run:
-          name: Build docker container
-          command: |
-            docker build --tag=$DOCKER_IMAGE_NAME .
-            docker image ls
-      - run:
-          name: Upload Docker to Dockerhub
-          command: |
-            echo "Docker ID and Image: $DOCKER_IMAGE_NAME"
-            docker login -u="$DOCKERHUB_USERNAME" -p="$DOCKERHUB_PASSWORD"
-            docker tag $DOCKER_IMAGE_NAME $DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$DOCKER_PATH
-            docker push $DOCKERHUB_USERNAME/$DOCKER_IMAGE_NAME:$DOCKER_PATH
-
   deploy-infrastructure:
     docker:
       - image: amazon/aws-cli
@@ -199,10 +178,6 @@ jobs:
 workflows:
   default:
     jobs:
-      - upload-docker:
-          filters:
-            branches:
-              only: [master]
       - deploy-infrastructure:
           filters:
             branches:
@@ -213,7 +188,6 @@ workflows:
       - configuration-cluster:
           requires:
             - configure-infrastructure
-            - upload-docker
       - deploy-docker:
           requires:
             - configuration-cluster
