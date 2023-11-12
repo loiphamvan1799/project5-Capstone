@@ -227,7 +227,7 @@ workflows:
       - test
       - upload-docker:
           requires:
-            - test-build
+            - test
           filters:
             branches:
               only: [master]
