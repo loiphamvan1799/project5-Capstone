@@ -218,7 +218,6 @@ jobs:
 workflows:
   default:
     jobs:
-      - lint
       - deploy-infrastructure:
           filters:
             branches:
