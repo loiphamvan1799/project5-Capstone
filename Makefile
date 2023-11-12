@@ -4,8 +4,10 @@ setup:
 install:
 	pip install --upgrade pip &&\
 	pip install -r requirements.txt
-	wget -O hadolint https://github.com/hadolint/hadolint/releases/download/v1.16.3/hadolint-Linux-x86_64 &&\
-	chmod +x hadolint
+	sudo apt-get install shellcheck -y
+	wget https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64
+	sudo mv hadolint-Linux-x86_64 /usr/local/bin/hadolint
+	sudo +x /lusr/local/bin/hadolint
 
 test:
 	#
