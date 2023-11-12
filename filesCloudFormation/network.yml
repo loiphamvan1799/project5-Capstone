@@ -10,27 +10,22 @@ Parameters:
   VPCCIDR: 
     Description: The IP range (CIDR notation)
     Type: String
-    Default: ""
 
   PublicSubnet1CIDR:
     Description: The IP range (CIDR notation) for the public subnet in the first Availability Zone
     Type: String
-    Default: ""
 
   PublicSubnet2CIDR:
     Description: The IP range (CIDR notation) for the public subnet in the second Availability Zone
     Type: String
-    Default: ""
 
   PrivateSubnet1CIDR:
     Description: The IP range (CIDR notation) for the private subnet in the first Availability Zone
     Type: String
-    Default: ""
 
   PrivateSubnet2CIDR:
     Description: The IP range (CIDR notation) for the private subnet in the second Availability Zone
     Type: String
-    Default: ""
 
 Resources:
   VPC:
