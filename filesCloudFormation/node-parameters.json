@@ -14,5 +14,9 @@
     {
 		"ParameterKey": "MaxSize",
 		"ParameterValue": "4"
+	},
+	{
+		"ParameterKey": "DesiredSize",
+		"ParameterValue": "2"
 	}
 ]

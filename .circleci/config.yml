@@ -34,6 +34,46 @@ commands:
             export PATH=$PATH:/usr/local/bin/kubectl
 
 jobs:
+  lint:
+    docker:
+      - image: circleci/python:3.7.3-stretch
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "requirements.txt" }}
+          - v1-dependencies-
+      - run:
+          name: create virtualenv
+          command: |
+            make setup
+      - run:
+          name: install dependencies
+          command: |
+            python3 -m venv ~/.devops
+            source ~/.devops/bin/activate
+            pip install -r requirements.txt
+      - save_cache:
+          paths:
+            - ./venv
+          key: v1-dependencies-{{ checksum "requirements.txt" }}
+      - run:
+          name: run install
+          command: |
+            source ~/.devops/bin/activate
+            make install
+      - run:
+          name: run tests
+          command: |
+            source ~/.devops/bin/activate
+            make test
+      - run:
+          name: run lint
+          command: |
+            source ~/.devops/bin/activate
+            make lint
+
   deploy-infrastructure:
     docker:
       - image: amazon/aws-cli
@@ -62,7 +102,7 @@ jobs:
               --parameter-overrides file://filesCloudFormation/cluster-parameters.json \
               --capabilities CAPABILITY_NAMED_IAM
       - run:
-          name: Node must exists
+          name: config node
           command: |
             aws cloudformation deploy \
               --template-file filesCloudFormation/node.yml \
@@ -72,7 +112,7 @@ jobs:
               --parameter-overrides file://filesCloudFormation/node-parameters.json \
               --capabilities CAPABILITY_NAMED_IAM
       - run:
-          name: Ensure management instances exists
+          name: config management
           command: |
             aws cloudformation deploy \
               --template-file filesCloudFormation/management.yml \
@@ -178,16 +218,4 @@ jobs:
 workflows:
   default:
     jobs:
-      - deploy-infrastructure:
-          filters:
-            branches:
-              only: [master]
-      - configure-infrastructure:
-          requires:
-            - deploy-infrastructure
-      - configuration-cluster:
-          requires:
-            - configure-infrastructure
-      - deploy-docker:
-          requires:
-            - configuration-cluster
+      - lint
