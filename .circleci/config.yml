@@ -229,7 +229,6 @@ workflows:
       - configuration-cluster:
           requires:
             - configure-infrastructure
-            - upload-docker
       - deploy-docker:
           requires:
             - configuration-cluster
