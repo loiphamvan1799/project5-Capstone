@@ -28,13 +28,14 @@ After the EKS-Cluster has been successfully configured using Ansible within the 
 ```
 $ kubectl get deployments
 NAME                          READY   UP-TO-DATE   AVAILABLE   AGE
-capstone-project-deployment   4/4     4            4           68m
+project-capstone-deployment   4/4     4            4           68m
 
 $ kubectl get services
 NAME                       TYPE           CLUSTER-IP       EXTERNAL-IP                                                                  PORT(S)        AGE
-capstone-project-service   LoadBalancer   10.100.240.221   ac183f8cf167449f4b2d330aafeb1dfe-1668269733.us-east-1.elb.amazonaws.com   80:32299/TCP   69m
+project-capstone-service   LoadBalancer   10.100.240.221   ac183f8cf167449f4b2d330aafeb1dfe-1668269733.us-east-1.elb.amazonaws.com   80:32299/TCP   69m
 kubernetes                 ClusterIP      10.100.0.1       <none>                                                                       443/TCP        80m
 ```
 
 Public LB DNS: http://ac183f8cf167449f4b2d330aafeb1dfe-1668269733.us-east-1.elb.amazonaws.com
 
+Evidence: Folder SREENSHOT
