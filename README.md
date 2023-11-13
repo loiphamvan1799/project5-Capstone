@@ -38,6 +38,5 @@ project-capstone-service   LoadBalancer   10.100.240.221   ac183f8cf167449f4b2d3
 kubernetes                 ClusterIP      10.100.0.1       <none>                                                                       443/TCP        80m
 ```
 
-Public LB DNS: http://ac183f8cf167449f4b2d330aafeb1dfe-1668269733.us-east-1.elb.amazonaws.com
 
 Evidence: Folder SREENSHOT
