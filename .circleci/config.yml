@@ -68,6 +68,11 @@ jobs:
           command: |
             source ~/.devops/bin/activate
             make test
+      - run:
+          name: run lint
+          command: |
+            source ~/.devops/bin/activate
+            make lint
 
   deploy-infrastructure:
     docker:
