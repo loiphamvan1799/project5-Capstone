@@ -6,6 +6,6 @@ docker image list
 
 docker login
 
-docker tag project-capstone loiphamvan/project-capstone:v1_1
+docker tag project-capstone loiphamvan/project-capstone:lasted
 
-docker push loiphamvan/project-capstone:v1_1
+docker push loiphamvan/project-capstone:lasted
