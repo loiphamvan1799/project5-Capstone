@@ -8,10 +8,12 @@ Parameters:
 
   SSHKeyName:
     Description: SSH key for management access
+    Default: key
     Type: String
 
   ImageId:
     Description: Defines the Image-ID
+    Default: ami-0fc5d935ebf8bc3bc
     Type: String
 
 Resources:
