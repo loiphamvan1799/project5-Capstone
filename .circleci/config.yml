@@ -83,7 +83,7 @@ jobs:
             aws cloudformation deploy \
               --template-file filesCloudFormation/network.yml \
               --tags project=${ENVIRONMENT_NAME}-project \
-              --stack-name "${ENVIRONMENT_NAME}-networkk" \
+              --stack-name "${ENVIRONMENT_NAME}-network" \
               --region ${AWS_DEFAULT_REGION} \
               --parameter-overrides file://filesCloudFormation/network-parameters.json
       - run:
